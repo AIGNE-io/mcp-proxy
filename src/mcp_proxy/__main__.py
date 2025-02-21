@@ -65,7 +65,7 @@ def main() -> None:
     stdio_client_options = parser.add_argument_group("stdio client options")
     stdio_client_options.add_argument(
         "args",
-        nargs="*",
+        nargs=argparse.REMAINDER,
         help="Any extra arguments to the command to spawn the server",
     )
     stdio_client_options.add_argument(
@@ -115,7 +115,7 @@ def main() -> None:
     stdio_params = StdioServerParameters(
         command=args.command_or_url,
         args=args.args,
-        env=dict(args.env),
+        env=None if not args.env else dict(args.env),
     )
     sse_settings = SseServerSettings(
         bind_host=args.sse_host,
