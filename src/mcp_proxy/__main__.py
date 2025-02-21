@@ -82,7 +82,7 @@ def main() -> None:
     sse_server_group.add_argument(
         "--sse-port",
         type=int,
-        default=0,
+        default=os.getenv("BLOCKLET_PORT", 0),
         help="Port to expose an SSE server on. Default is a random port",
     )
     sse_server_group.add_argument(
