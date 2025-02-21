@@ -37,6 +37,7 @@ COPY --from=uv --chown=app:app /app/.venv /app/.venv
 # Place executables in the environment at the front of the path
 ENV PATH="/app/.venv/bin:$PATH"
 
-ENV BLOCKLET_PORT=3000
+ENV SSE_PORT="3000"
+ENV SSE_HOST="0.0.0.0"
 
 ENTRYPOINT ["mcp-proxy"]
