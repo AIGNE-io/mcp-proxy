@@ -30,7 +30,11 @@ LABEL org.opencontainers.image.description="Connect to MCP servers that run on S
 LABEL org.opencontainers.image.licenses=MIT
 
 # Install Node.js and npm to run MCP servers that develop with JavaScript
-RUN apk add --update nodejs npm uv
+RUN apk add --update nodejs npm uv chromium
+
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium
+ENV DOCKER_CONTAINER=true
 
 COPY --from=uv --chown=app:app /app/.venv /app/.venv
 
