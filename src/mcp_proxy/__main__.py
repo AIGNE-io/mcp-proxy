@@ -115,7 +115,7 @@ def main() -> None:
     stdio_params = StdioServerParameters(
         command=args.command_or_url,
         args=args.args,
-        env=None if not args.env else dict(args.env),
+        env=dict(os.environ) if not args.env else dict(args.env),
     )
     sse_settings = SseServerSettings(
         bind_host=args.sse_host,
